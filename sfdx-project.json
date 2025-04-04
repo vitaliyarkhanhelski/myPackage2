@@ -21,8 +21,8 @@
       "versionDescription": "Test Unlocked Package Name Space"
     },
     {
-      "versionName": "ver 0.1",
-      "versionNumber": "0.1.0.NEXT",
+      "versionName": "ver 1.0.10",
+      "versionNumber": "1.0.10.NEXT",
       "path": "package-source",
       "default": false,
       "package": "MyPackageBuild",

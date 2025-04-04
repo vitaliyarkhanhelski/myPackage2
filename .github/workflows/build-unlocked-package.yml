@@ -47,9 +47,9 @@ jobs:
           sf package version create \
             --package "MyPackageBuild" \
             --code-coverage \
-            -n "${{ github.event.release.tag_name }}.1" \
-            -a "ver ${{ github.event.release.tag_name }}" \
-            -k vit667 \
+            --version-number "${{ github.event.release.tag_name }}.1" \
+            --version-name "ver ${{ github.event.release.tag_name }}" \
+            --installation-key vit667 \
             --json > version_run.json
           
           cat version_run.json
@@ -66,7 +66,7 @@ jobs:
         run: |
           while true; do
             sleep 30
-            STATUS_JSON=$(sf package version create report -i ${{ env.RUN_ID }} --json)
+            STATUS_JSON=$(sf package version create report --package-create-request-id ${{ env.RUN_ID }} --json)
             STATUS=$(echo "$STATUS_JSON" | jq -r '.result[0].Status' 2>/dev/null)
 
             if [[ "$STATUS" == "Success" ]]; then
@@ -83,4 +83,4 @@ jobs:
 
       - name: Display package version info
         run: |
-          sf package version create report -i ${{ env.RUN_ID }} --json | jq '.result'
+          sf package version create report --package-create-request-id ${{ env.RUN_ID }} --json | jq '.result'
