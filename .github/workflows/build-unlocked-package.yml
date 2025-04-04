@@ -9,5 +9,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Install Salesforce CLI
+        run: |
+          node --version
+          npm install @salesforce/cli --global
+          sf update stable
+          sf version
+          sf plugins
+          
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+            fetch-depth: 0
+
       - name: Say Hello
         run: echo "Hello World 🎉 The release event worked!"
