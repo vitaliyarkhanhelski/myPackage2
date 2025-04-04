@@ -9,6 +9,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Show key
+        run: echo "${{ secrets.DEVHUB_CERT_KEY }}"
+
       - name: Install Salesforce CLI
         run: |
           node --version
