@@ -1,0 +1,13 @@
+name: Build the Unlocked Package
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  hello-world:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Say Hello
+        run: echo "Hello World 🎉 The release event worked!"

@@ -19,6 +19,14 @@
       "default": false,
       "package": "TestUnlockedPackageNameSpace",
       "versionDescription": "Test Unlocked Package Name Space"
+    },
+    {
+      "versionName": "ver 0.1",
+      "versionNumber": "0.1.0.NEXT",
+      "path": "package-source",
+      "default": false,
+      "package": "MyPackageBuild",
+      "versionDescription": "My Package Build"
     }
   ],
   "namespace": "vit667",
@@ -26,6 +34,7 @@
   "sourceApiVersion": "63.0",
   "packageAliases": {
     "DemoUnlockedPackage": "0HoWU0000000aI10AI",
-    "TestUnlockedPackageNameSpace": "0HoWU0000000aJd0AI"
+    "TestUnlockedPackageNameSpace": "0HoWU0000000aJd0AI",
+    "MyPackageBuild": "0HoWU0000000aQ50AI"
   }
 }
