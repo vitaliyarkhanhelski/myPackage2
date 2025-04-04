@@ -25,18 +25,13 @@ jobs:
       - name: Say Hello
         run: echo "Hello World 🎉 The release event worked!"
 
-      - name: Authenticate to Salesforce
+      - name: "Authenticate Salesforce Dev Hub org"
         run: |
-            echo "Authenticating to Salesforce..."
-            sf auth web --client-id 3MVG9PwZx9R6_Urce3.53_goaHUSQhHZQC8Gk07lhPQ4Fxi4aJQzx0nadjm_PDmMw6OTiSf6QqGFDCrp0Bh.J \
-              --client-secret AD0DF8D1E700EB6BE1E026FBDBA889B86562E0F85C42C7A17B73FAA152BA1045 \
-              --username "vitaliyarkhanhelski@curious-impala-7guxhs.com" \
-              --password "SalesForce321!7ynDqv84tyyWUDppFe5evVJeq" \
-              --instance-url "https://login.salesforce.com" \
-              --set-default-username
-#            sf auth web --clientid ${{ secrets.SF_CONSUMER_KEY }} \
-#              --clientsecret ${{ secrets.SF_CONSUMER_SECRET }} \
-#              --username ${{ secrets.SF_USERNAME }} \
-#              --password ${{ secrets.SF_PASSWORD }} \
-#              --instanceurl ${{ secrets.SF_LOGIN_URL }} \
-#              --setdefaultusername
+          echo "${{ secrets.DEVHUB_CERT_KEY }}" > server.key
+          sf org login jwt \
+            --client-id "3MVG9PwZx9R6_Urce3.53_goaHUSQhHZQC8Gk07lhPQ4Fxi4aJQzx0nadjm_PDmMw6OTiSf6QqGFDCrp0Bh.J" \
+            --username "vitaliyarkhanhelski@curious-impala-7guxhs.com" \
+            --jwt-key-file server.key \
+            --set-default-dev-hub \
+            --instance-url "https://login.salesforce.com" \
+            --alias vitDevHub
