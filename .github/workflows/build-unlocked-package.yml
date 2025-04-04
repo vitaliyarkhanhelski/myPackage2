@@ -35,7 +35,52 @@ jobs:
             --set-default-dev-hub \
             --instance-url https://login.salesforce.com \
             --alias myOrg
+          sf config get target-dev-hub
 
       - name: "Query 5 Accounts"
         run: |
           sf data query --query "SELECT Id, Name FROM Account LIMIT 5" --target-org myOrg
+
+      - name: "Create package version"
+        id: create_package_version
+        run: |
+          sf package version create \
+            --package "MyPackageBuild" \
+            --code-coverage \
+            -n "${{ github.event.release.tag_name }}.1" \
+            -a "ver ${{ github.event.release.tag_name }}" \
+            -k vit667 \
+            --json > version_run.json
+          
+          cat version_run.json
+          RUN_ID=$(jq -r '.result.Id' version_run.json)
+          echo "RUN_ID=$RUN_ID" >> $GITHUB_ENV
+          
+          if [[ "$RUN_ID" == "null" || -z "$RUN_ID" ]]; then
+            echo "Failed to retrieve RUN_ID!"
+            exit 1
+          fi
+
+      - name: Poll package version creation status
+        id: poll-package
+        run: |
+          while true; do
+            sleep 30
+            STATUS_JSON=$(sf package version create report -i ${{ env.RUN_ID }} --json)
+            STATUS=$(echo "$STATUS_JSON" | jq -r '.result[0].Status' 2>/dev/null)
+
+            if [[ "$STATUS" == "Success" ]]; then
+              echo "Package created successfully!"
+              break
+            elif [[ "$STATUS" == "Error" ]]; then
+              echo "Package creation failed!"
+              echo "$STATUS_JSON"
+              exit 1
+            else
+              echo "Current status: $STATUS. Polling again..."
+            fi
+          done
+
+      - name: Display package version info
+        run: |
+          sf package version create report -i ${{ env.RUN_ID }} --json | jq '.result'
