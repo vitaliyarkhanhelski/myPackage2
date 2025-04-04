@@ -35,8 +35,6 @@ jobs:
             --client-id 3MVG9PwZx9R6_Urce3.53_goaHf7kmL8zRlPSyLmewCZ.j1L2jNdje9ei0PG_eKnhmivFhGKcGduQ2JXgHszT \
             --username vitaliyarkhanhelski@curious-impala-7guxhs.com \
             --jwt-key-file server.key \
+            --set-default-dev-hub
             --instance-url https://login.salesforce.com \
             --alias myOrg
-          
-          echo "${{ secrets.SALESFORCE_JWT_SECRET_KEY }}" > server.key
-          sf org login jwt --client-id=3MVG9PwZx9R6_Urce3.53_goaHUSQhHZQC8Gk07lhPQ4Fxi4aJQzx0nadjm_PDmMw6OTiSf6QqGFDCrp0Bh.J --jwt-key-file=server.key --username=vitaliyarkhanhelski@curious-impala-7guxhs.com --set-default-dev-hub
