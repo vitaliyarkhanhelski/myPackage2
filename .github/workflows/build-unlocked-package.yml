@@ -9,9 +9,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Show key
-        run: echo "${{ secrets.DEVHUB_CERT_KEY }}"
-
       - name: Install Salesforce CLI
         run: |
           node --version
@@ -35,6 +32,10 @@ jobs:
             --client-id 3MVG9PwZx9R6_Urce3.53_goaHf7kmL8zRlPSyLmewCZ.j1L2jNdje9ei0PG_eKnhmivFhGKcGduQ2JXgHszT \
             --username vitaliyarkhanhelski@curious-impala-7guxhs.com \
             --jwt-key-file server.key \
-            --set-default-dev-hub
+            --set-default-dev-hub \
             --instance-url https://login.salesforce.com \
             --alias myOrg
+
+      - name: "Query 5 Accounts"
+        run: |
+          sf data query --query "SELECT Id, Name FROM Account LIMIT 5" --target-org myOrg
