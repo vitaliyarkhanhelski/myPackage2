@@ -1,0 +1,31 @@
+{
+  "packageDirectories": [
+    {
+      "path": "force-app",
+      "default": true
+    },
+    {
+      "versionName": "ver 0.1.0.3",
+      "versionNumber": "0.1.0.NEXT",
+      "path": "package-source",
+      "default": false,
+      "package": "DemoUnlockedPackage",
+      "versionDescription": "Demo Unlocked Package"
+    },
+    {
+      "versionName": "ver 0.1.0.6",
+      "versionNumber": "0.1.0.NEXT",
+      "path": "package-source",
+      "default": false,
+      "package": "TestUnlockedPackageNameSpace",
+      "versionDescription": "Test Unlocked Package Name Space"
+    }
+  ],
+  "namespace": "vit667",
+  "sfdcLoginUrl": "https://login.salesforce.com",
+  "sourceApiVersion": "63.0",
+  "packageAliases": {
+    "DemoUnlockedPackage": "0HoWU0000000aI10AI",
+    "TestUnlockedPackageNameSpace": "0HoWU0000000aJd0AI"
+  }
+}
