@@ -22,5 +22,5 @@ jobs:
         with:
             fetch-depth: 0
 
-      - name: Say Hello
-        run: echo "Hello World 🎉 The release event worked!"
+#      - name: Say Hello
+#        run: echo "Hello World 🎉 The release event worked!"
