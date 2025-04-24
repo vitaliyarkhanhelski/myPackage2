@@ -52,15 +52,20 @@ jobs:
             --installation-key vit667 \
             --json > version_run.json
           
+#         Display the contents of the file in the terminal
           cat version_run.json
+#         Read file and extract the value of result.Id in the shell variable RUN_ID
           RUN_ID=$(jq -r '.result.Id' version_run.json)
+#         Write the variable to a special file ($GITHUB_ENV) used in GitHub Actions, making it available to later steps in the workflow
           echo "RUN_ID=$RUN_ID" >> $GITHUB_ENV
-          
+               
+#         Safety check to ensure that RUN_ID was retrieved successfully
           if [[ "$RUN_ID" == "null" || -z "$RUN_ID" ]]; then
             echo "Failed to retrieve RUN_ID!"
             exit 1
           fi
 
+#       Validate every 30 sec if the package version creation is completed
       - name: Poll package version creation status
         id: poll-package
         run: |
@@ -81,6 +86,10 @@ jobs:
             fi
           done
 
+#       Display the result of status report of a package version creation request
       - name: Display package version info
         run: |
           sf package version create report --package-create-request-id ${{ env.RUN_ID }} --json | jq '.result'
+          
+          
+#          sf package version create report --package-create-request-id 08cWU0000002MAvYAM"

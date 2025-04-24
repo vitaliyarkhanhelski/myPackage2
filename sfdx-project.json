@@ -27,6 +27,31 @@
       "default": false,
       "package": "MyPackageBuild",
       "versionDescription": "My Package Build"
+    },
+    {
+      "versionName": "ver 0.1",
+      "versionNumber": "0.1.0.NEXT",
+      "path": "package-source",
+      "default": false,
+      "package": "DemoUnlockedPack2",
+      "versionDescription": "Demo Unlocked Package"
+    },
+    {
+      "versionName": "ver 0.1",
+      "versionNumber": "0.1.0.NEXT",
+      "path": "package-source",
+      "default": false,
+      "package": "DemoUnlockedPackNameSpace",
+      "versionDescription": "Demo Unlocked Package With NameSpace"
+    },
+    {
+      "versionName": "ver 0.1",
+      "versionNumber": "0.1.0.NEXT",
+      "path": "package-source",
+      "default": false,
+      "package": "DemoManagedPackage",
+      "versionDescription": "Demo Managed Package",
+      "ancestorVersion": "HIGHEST"
     }
   ],
   "namespace": "vit667",
@@ -35,6 +60,9 @@
   "packageAliases": {
     "DemoUnlockedPackage": "0HoWU0000000aI10AI",
     "TestUnlockedPackageNameSpace": "0HoWU0000000aJd0AI",
-    "MyPackageBuild": "0HoWU0000000aQ50AI"
+    "MyPackageBuild": "0HoWU0000000aQ50AI",
+    "DemoUnlockedPack2": "0HoWU0000000ajR0AQ",
+    "DemoUnlockedPackNameSpace": "0HoWU0000000b2n0AA",
+    "DemoManagedPackage": "0HoWU0000000bM90AI"
   }
 }

@@ -1,0 +1,19 @@
+<template>
+    <div class="slds-m-bottom_small">
+        <lightning-card title="Parent Dynamic LWC Component" icon-name="custom:custom63">
+            <div class="slds-m-around_medium">
+                <lightning-button label="Load Component A" onclick={loadComponentA} class="slds-m-right_small"></lightning-button>
+                <lightning-button label="Load Component B" onclick={loadComponentB} class="slds-m-right_small"></lightning-button>
+                <lightning-button label="Reset" onclick={reset}></lightning-button>
+                <br/>
+                <p class="slds-box slds-m-top_small" if:true={childMessage}><code>{childMessage}</code></p>
+            </div>
+            
+        </lightning-card>
+    </div>
+
+    <template if:true={dynamicComponent}>
+        <lwc:component lwc:is={dynamicComponent} oncustomevent1={handleChildEvent} oncustomevent2={handleChildEvent}></lwc:component>
+        <!-- <lwc:component lwc:is={dynamicComponent} onready={handleChildReady} data-id="dynamic"></lwc:component> -->
+    </template>
+</template>

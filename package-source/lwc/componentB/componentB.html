@@ -1,0 +1,15 @@
+<template>
+    <lightning-card title="Child Component B" icon-name="custom:custom61">
+        <div class="slds-m-around_medium">
+            <lightning-combobox
+                name="colorOptions"
+                label="Select a Color"
+                value={selectedColor}
+                options={colorOptions}
+                onchange={handleColorChange}>
+            </lightning-combobox>
+
+            <div class="color-box" style={colorStyle}></div>
+        </div>
+    </lightning-card>
+</template>

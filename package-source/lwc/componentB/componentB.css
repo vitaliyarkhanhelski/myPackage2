@@ -1,0 +1,4 @@
+.color-box {
+    width: 100%;
+    transition: background-color 1s ease;
+}

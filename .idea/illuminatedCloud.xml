@@ -4,10 +4,10 @@
     <option name="connections">
       <list>
         <IlluminatedCloudConnection>
-          <option name="connectionName" value="vitOrg" />
+          <option name="connectionName" value="vitDevHub" />
           <option name="connectionType" value="OAUTH" />
           <option name="defaultModuleName" value="vitDevHub" />
-          <option name="offlineSymbolTablePath" value="$PROJECT_DIR$/IlluminatedCloud/vitOrg/OfflineSymbolTable.zip" />
+          <option name="offlineSymbolTablePath" value="$PROJECT_DIR$/IlluminatedCloud/vitDevHub/OfflineSymbolTable.zip" />
         </IlluminatedCloudConnection>
       </list>
     </option>
